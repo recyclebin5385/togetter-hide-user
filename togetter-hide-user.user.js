@@ -7,7 +7,7 @@
 // @grant       none
 // ==/UserScript==
 
-var urlToIdPattern = /profile_images\/([^\/]+)/;
+var urlToIdPattern = /\/profile_images\/([^\/]+)/;
 
 function urlToId(url) {
     if(url.match(urlToIdPattern)) {
