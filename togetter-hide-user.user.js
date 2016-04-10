@@ -145,7 +145,7 @@ function hideUsers() {
                 parentLi.after("<li class='clearfix dummy'></li>");
                 dummyParentLi = parentLi.next('.dummy');
 
-                dummyParentLi.append($(this).clone(true));
+                dummyParentLi.append($(this).clone(true).unbind());
                 dummyParentLi.attr('title', parentLi.find('h3').text());
                 dummyParentLi.append("[削除済]");
                 dummyParentLi.dblclick(function() {
