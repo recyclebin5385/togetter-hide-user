@@ -3,7 +3,8 @@
 // @namespace   recyclebin5385
 // @description togetterの特定ユーザを見えなくする
 // @include     http://togetter.com/*
-// @version     1
+// @include     https://togetter.com/*
+// @version     2
 // @grant       none
 // ==/UserScript==
 
