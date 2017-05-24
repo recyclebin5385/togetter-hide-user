@@ -4,7 +4,7 @@
 // @description togetterの特定ユーザを見えなくする
 // @include     http://togetter.com/*
 // @include     https://togetter.com/*
-// @version     2
+// @version     3
 // @grant       none
 // ==/UserScript==
 
@@ -50,7 +50,7 @@
 //
 
 
-var urlToIdPattern = /\/profile_images\/([^\/]+)/;
+var urlToIdPattern = /\/(?:default_)?profile_images\/([^\/]+)/;
 
 function urlToId(url) {
     if(url.match(urlToIdPattern)) {
