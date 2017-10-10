@@ -4,7 +4,7 @@
 // @description togetterの特定ユーザを見えなくする
 // @include     http://togetter.com/*
 // @include     https://togetter.com/*
-// @version     3
+// @version     4
 // @grant       none
 // ==/UserScript==
 
@@ -142,7 +142,7 @@ function hideUsers() {
 
         if ($.inArray(id, hiddenUserIds) != -1) {
             parentLi.hide();
-            if (dummyParentLi.size() == 0) {
+            if (dummyParentLi.length == 0) {
                 parentLi.after("<li class='clearfix dummy'></li>");
                 dummyParentLi = parentLi.next('.dummy');
 
