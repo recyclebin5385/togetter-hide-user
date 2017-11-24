@@ -4,7 +4,7 @@
 // @description togetterの特定ユーザを見えなくする
 // @include     http://togetter.com/*
 // @include     https://togetter.com/*
-// @version     4
+// @version     5
 // @grant       none
 // ==/UserScript==
 
@@ -146,7 +146,8 @@ function hideUsers() {
                 parentLi.after("<li class='clearfix dummy'></li>");
                 dummyParentLi = parentLi.next('.dummy');
 
-                dummyParentLi.append($(this).clone(true).unbind('dblclick'));
+                // 削除済のまとめに対してユーザのアイコンを出す場合は以下をアンコメントする
+                // dummyParentLi.append($(this).clone(true).unbind('dblclick'));
                 dummyParentLi.attr('title', parentLi.find('h3').text());
                 dummyParentLi.append("[削除済]");
                 dummyParentLi.dblclick(function() {
