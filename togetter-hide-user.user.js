@@ -4,7 +4,8 @@
 // @description togetterの特定ユーザを見えなくする
 // @include     http://togetter.com/*
 // @include     https://togetter.com/*
-// @version     5
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
+// @version     6
 // @grant       none
 // ==/UserScript==
 
