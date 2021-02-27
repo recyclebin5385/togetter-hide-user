@@ -154,7 +154,7 @@
     function hideUsers() {
         var hiddenUserIds = getHiddenUserIds();
         $('.topics_box .icon_24').each(function() {
-            var id = urlToId($(this).attr('data-lazy-src'));
+            var id = urlToId($(this).attr('data-lazy-src') || $(this).attr('src'));
             var parentLi = $(this).parents('li').filter(':not(.dummy)');
             var dummyParentLi = $(this).parents('li').next('li.dummy');
 
@@ -185,7 +185,7 @@
 
     $(function() {
         $('.topics_box .icon_24').dblclick(function() {
-            var id = urlToId($(this).attr('data-lazy-src'));
+            var id = urlToId($(this).attr('data-lazy-src') || $(this).attr('src'));
             if (id == null || id == '') {
                 return;
             }
