@@ -82,9 +82,17 @@
     }
 
     function getHiddenUserIds() {
-        var cookieMap = getCookieMap();
-        var joinedHiddenUserIds = cookieMap['hiddenUserIds'];
-        if (joinedHiddenUserIds != null && joinedHiddenUserIds != '') {
+        var joinedHiddenUserIds = null;
+        if (typeof localStorage !== 'undefined') {
+            // localStorageから取得
+            joinedHiddenUserIds = localStorage.getItem('togetter-hide-user.hiddenUserIds');
+        }
+        if (!joinedHiddenUserIds) {
+            // Cookieから取得
+            var cookieMap = getCookieMap();
+            joinedHiddenUserIds = cookieMap['hiddenUserIds'];
+        }
+        if (joinedHiddenUserIds) {
             return joinedHiddenUserIds.split(' ');
         } else {
             return new Array();
@@ -92,17 +100,23 @@
     }
 
     function setHiddenUserIds(ids) {
-        var now = new Date();
-        var maxAgeDay = 30;
-        now.setTime(now.getTime() + maxAgeDay * 24 * 60 * 60 * 1000);
-        var expires = now.toGMTString();
-        var cookie = 'hiddenUserIds=' + encodeURIComponent(ids.join(' ')) + ";expires=" + expires;
+        if (typeof localStorage !== 'undefined') {
+            // localStorageに保存
+            localStorage.setItem('togetter-hide-user.hiddenUserIds', ids.join(' '));
+        } else {
+            // Cookieに保存
+            var now = new Date();
+            var maxAgeDay = 30;
+            now.setTime(now.getTime() + maxAgeDay * 24 * 60 * 60 * 1000);
+            var expires = now.toGMTString();
+            var cookie = 'hiddenUserIds=' + encodeURIComponent(ids.join(' ')) + ";expires=" + expires;
 
-        if (cookie.length > 4096) {
-            return false;
+            if (cookie.length > 4096) {
+                return false;
+            }
+
+            document.cookie = cookie;
         }
-
-        document.cookie = cookie;
         hideUsers();
         return true;
     }
