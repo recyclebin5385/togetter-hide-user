@@ -5,7 +5,7 @@
 // @include     http://togetter.com/*
 // @include     https://togetter.com/*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
-// @version     7
+// @version     8
 // @grant       none
 // ==/UserScript==
 
